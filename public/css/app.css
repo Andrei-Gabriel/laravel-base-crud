@@ -11005,9 +11005,8 @@ body .position-ref .content > a .title {
   font-size: 84px;
 }
 
-.card {
-  min-height: 700px;
-  max-height: 700px;
-  overflow: auto;
+.card_small {
+  min-height: 820px;
+  max-height: 820px;
 }
 

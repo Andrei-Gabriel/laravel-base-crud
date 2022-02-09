@@ -49,7 +49,10 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        // SELECT * FROM comics WHERE id = x
+        $comic = Comic::find($id);
+        
+        return view("products.show", compact("comic"));
     }
 
     /**
