@@ -1,25 +1,23 @@
-{{-- @extends('layout.base') --}}
+@extends('layout.base')
 
-{{-- @section('pageContent')
+@section('pageContent')
     <ul>
         @foreach ($comics as $aComic)
             <li>{{$aComic->title}}</li>
         @endforeach
     </ul>
-@endsection --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Comics</title>
-</head>
-<body>
-    <ul>
-        @foreach ($comics as $aComic)
-            <li>{{$aComic->title}}</li>
-        @endforeach
-    </ul>
-</body>
-</html>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">col</div>
+          <div class="col">col</div>
+          <div class="col">col</div>
+          <div class="col">col</div>
+        </div>
+        <div class="row">
+          <div class="col-8">col-8</div>
+          <div class="col-4">col-4</div>
+        </div>
+    </div>
+@endsection
+    
