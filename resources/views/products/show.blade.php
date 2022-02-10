@@ -14,7 +14,12 @@
                     <p class="card-text">{{$comic->series}}</p>
                     <p class="card-text">{{$comic->sale_date}}</p>
                     <p class="card-text">{{$comic->description}}</p>
+
                     <a href="http://127.0.0.1:8000/comics"><button type="button" class="btn btn-primary">TORNA ALLA LISTA</button></a>
+
+                    <a class="ml-3" href="http://127.0.0.1:8000/comics/{{$comic->id}}/edit"><button type="button" class="btn btn-warning">MODIFICA</button></a>
+
+                    <a class="ml-5" href="http://127.0.0.1:8000/comics/{{$comic->id}}/edit"><button type="button" class="btn btn-danger">ELIMINA</button></a>
                 </div>
                 </div>
             </div>

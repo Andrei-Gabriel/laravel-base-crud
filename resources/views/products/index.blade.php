@@ -13,7 +13,14 @@
                             <p class="card-text">{{$aComic->series}}</p>
                             <p class="card-text">{{$aComic->sale_date}}</p>
                         </div>
-                        <a class="mx-3 mb-3" href="http://127.0.0.1:8000/comics/{{$aComic->id}}"><button type="button" class="btn btn-primary">PIU' INFO</button></a>
+
+                        <div class="container-fluid d-flex justify-content-around flex-wrap">
+                            <a class="mb-3" href="http://127.0.0.1:8000/comics/{{$aComic->id}}"><button type="button" class="btn btn-primary">PIU' INFO</button></a>
+    
+                            <a class="mb-3" href="http://127.0.0.1:8000/comics/{{$aComic->id}}/edit"><button type="button" class="btn btn-warning">MODIFICA</button></a>
+
+                            <a class="my-3" href="http://127.0.0.1:8000/comics/{{$aComic->id}}/edit"><button type="button" class="btn btn-danger">ELIMINA</button></a>
+                        </div>
                     </div>
                 </div>
             @endforeach
