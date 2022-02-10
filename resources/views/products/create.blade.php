@@ -3,7 +3,7 @@
 @section('pageContent')
     <div class="container">
         <h1>Crea un prodotto</h1>
-        <form>
+        <form action="{{route("products.store")}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="title">Titolo</label>
@@ -36,6 +36,7 @@
                 <label for="description">Descrizione del fumetto</label>
                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
             </div>
+            <button type="submit" class="btn btn-primary">Aggiungi il fumetto</button>
         </form>
     </div>
 @endsection
