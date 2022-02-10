@@ -23,7 +23,7 @@
                             <form action="{{route("comics.destroy", $aComic->id)}}" method="POST">
                                 @csrf
                                 @method("DELETE")
-                                <button type="button" class="btn btn-danger">ELIMINA</button>
+                                <button type="submit" class="btn btn-danger">ELIMINA</button>
                                 {{-- <a class="my-3" href="http://127.0.0.1:8000/comics/{{$aComic->id}}/edit"></a> --}}
                             </form>
                         </div>
