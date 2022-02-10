@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Descrizione del fumetto</label>
-                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="7"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Aggiungi il fumetto</button>
         </form>

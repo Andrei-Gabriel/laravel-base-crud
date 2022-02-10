@@ -42,17 +42,17 @@ class ComicController extends Controller
         //Prendo i dati dal form
         $data = $request->all();
         //Inserisco un nuovo record nella tabella
-        $newProduct = new Comic();
-        $newProduct->title = $data["title"];
-        $newProduct->description = $data["description"];
-        $newProduct->url_img = $data["thumb"];
-        $newProduct->price = $data["price"];
-        $newProduct->series = $data["series"];
-        $newProduct->sale_date = $data["sale_date"];
-        $newProduct->type = $data["type"];
-        $newProduct->save();
+        $newComic = new Comic();
+        $newComic->title = $data["title"];
+        $newComic->description = $data["description"];
+        $newComic->url_img = $data["thumb"];
+        $newComic->price = $data["price"];
+        $newComic->series = $data["series"];
+        $newComic->sale_date = $data["sale_date"];
+        $newComic->type = $data["type"];
+        $newComic->save();
 
-        return redirect()->route('comics.show', $newProduct->id);
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -75,9 +75,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view("products.edit", compact("comic"));
     }
 
     /**
@@ -87,9 +87,21 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        //Prendo i dati dal form
+        $data = $request->all();
+        //Ho già l'elemento. E' una modifica
+        $comic->title = $data["title"];
+        $comic->description = $data["description"];
+        $comic->url_img = $data["thumb"];
+        $comic->price = $data["price"];
+        $comic->series = $data["series"];
+        $comic->sale_date = $data["sale_date"];
+        $comic->type = $data["type"];
+        $comic->save();
+        //Restituisco la pagina modificata
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
