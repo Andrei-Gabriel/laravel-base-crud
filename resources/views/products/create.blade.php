@@ -3,7 +3,7 @@
 @section('pageContent')
     <div class="container">
         <h1>Crea un prodotto</h1>
-        <form action="{{route("products.store")}}" method="POST">
+        <form action="{{route("comics.store")}}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="title">Titolo</label>
