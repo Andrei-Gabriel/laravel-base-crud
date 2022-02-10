@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('layout.base');
 });
 
+// php artisan route:list
 Route::resource("comics", "ComicController");

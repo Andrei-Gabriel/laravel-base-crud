@@ -16,6 +16,7 @@ class ComicController extends Controller
     {
         $comics = Comic::all();
 
+        // Cartella products/ file index.blade.php
         // ["comics" => $comics]
         return view("products.index", compact("comics"));
     }
@@ -27,7 +28,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view("products.create");
     }
 
     /**
