@@ -10,8 +10,8 @@
                 <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci un titolo">
             </div>
             <div class="form-group">
-                <label for="thumb">URL immagine</label>
-                <input type="text" class="form-control" id="thumb" name="thumb" placeholder="Inserisci un'immagine">
+                <label for="url_img">URL immagine</label>
+                <input type="text" class="form-control" id="url_img" name="url_img" placeholder="Inserisci un'immagine">
             </div>
             <div class="form-group">
                 <label for="price">Prezzo</label>
