@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comic;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
@@ -41,6 +42,18 @@ class ComicController extends Controller
     {
         //Prendo i dati dal form
         $data = $request->all();
+
+        // Validazione
+        $request->validate([
+            "title" => "required|string|max:50|unique:comics",
+            "description" => "required",
+            "url_img" => "required|string|max:255|unique:comics",
+            "price" => "required|numeric",
+            "series" => "required|string|max:50",
+            "sale_date" => "required|date",
+            "type" => "required",
+        ]);
+
         //Inserisco un nuovo record nella tabella
         // $newComic = new Comic();
         // $newComic->title = $data["title"];
