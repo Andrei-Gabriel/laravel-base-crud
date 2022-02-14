@@ -45,10 +45,12 @@
                 <label for="type">Tipo fumetto</label>
                 <select class="form-control @error('type') is-invalid @enderror" id="type" name="type">
                     @php
-                        $chose = old("type") ? old("type") : $comic->type;
+                        function choseType($var){
+                            return $chose = old("type") ? old("type") : $var->type;
+                        }
                     @endphp
-                    <option value="comic book" {{$chose == "comic book" ? "selected" : ""}}>Comic book</option>
-                    <option value="graphic novel" {{$chose == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    <option value="comic book" {{chose($comic) == "comic book" ? "selected" : ""}}>Comic book</option>
+                    <option value="graphic novel" {{chose($comic) == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
                     {{-- @if(old("type"))
                         <option value="comic book" {{old("type") == "comic book" ? "selected" : ""}}>Comic book</option>
                         <option value="comic book" {{old("type") == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
