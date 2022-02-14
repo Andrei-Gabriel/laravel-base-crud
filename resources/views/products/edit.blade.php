@@ -29,14 +29,14 @@
             </div>
             <div class="form-group">
                 <label for="series">Serie</label>
-                <input type="text" class="form-control @error('series') is-invalid @enderror" id="series" name="series" value="{{old("series") ? old("seires") : $comic->series}}" placeholder="Inserisci la serie">
+                <input type="text" class="form-control @error('series') is-invalid @enderror" id="series" name="series" value="{{old("series") ? old("series") : $comic->series}}" placeholder="Inserisci la serie">
                 @error('series')
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="sale_date">Data di vendita</label>
-                <input type="date" min="1970-01-01" max="2025-12-31" class="form-control @error('sale_date') is-invalid @enderror" value="{{$comic->sale_date}}" id="sale_date" name="sale_date">
+                <input type="date" min="1970-01-01" max="2025-12-31" class="form-control @error('sale_date') is-invalid @enderror" value="{{old("sale_date") ? old("sale_date") : $comic->sale_date}}" id="sale_date" name="sale_date">
                 @error('sale_date')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
@@ -44,8 +44,18 @@
             <div class="form-group">
                 <label for="type">Tipo fumetto</label>
                 <select class="form-control @error('type') is-invalid @enderror" id="type" name="type">
-                    <option value="comic book" {{$comic->type == "comic book" ? "selected" : ""}}>Comic book</option>
-                    <option value="graphic novel" {{$comic->type == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    @php
+                        $chose = old("type") ? old("type") : $comic->type;
+                    @endphp
+                    <option value="comic book" {{$chose == "comic book" ? "selected" : ""}}>Comic book</option>
+                    <option value="graphic novel" {{$chose == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    {{-- @if(old("type"))
+                        <option value="comic book" {{old("type") == "comic book" ? "selected" : ""}}>Comic book</option>
+                        <option value="comic book" {{old("type") == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    @else
+                        <option value="comic book" {{$comic->type == "comic book" ? "selected" : ""}}>Comic book</option>
+                        <option value="graphic novel" {{$comic->type == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    @endif --}}
                 </select>
                 @error('type')
                     <div class="alert alert-danger">{{$message}}</div>
