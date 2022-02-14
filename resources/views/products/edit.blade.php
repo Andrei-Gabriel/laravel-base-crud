@@ -49,8 +49,8 @@
                             return $chose = old("type") ? old("type") : $var->type;
                         }
                     @endphp
-                    <option value="comic book" {{chose($comic) == "comic book" ? "selected" : ""}}>Comic book</option>
-                    <option value="graphic novel" {{chose($comic) == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
+                    <option value="comic book" {{choseType($comic) == "comic book" ? "selected" : ""}}>Comic book</option>
+                    <option value="graphic novel" {{choseType($comic) == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
                     {{-- @if(old("type"))
                         <option value="comic book" {{old("type") == "comic book" ? "selected" : ""}}>Comic book</option>
                         <option value="comic book" {{old("type") == "graphic novel" ? "selected" : ""}}>Graphic novel</option>
