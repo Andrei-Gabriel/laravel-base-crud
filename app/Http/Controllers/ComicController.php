@@ -43,9 +43,9 @@ class ComicController extends Controller
         //Prendo i dati dal form
         $data = $request->all();
 
-        // Validazione
+        // Validazione create
         $request->validate([
-            "title" => "required|string|max:50|unique:comics",
+            "title" => "required|string|max:50|unique:comics", //
             "description" => "required",
             "url_img" => "required|url", //|unique:comics
             "price" => "required|numeric|min:0|max:99",
@@ -110,15 +110,37 @@ class ComicController extends Controller
     {
         //Prendo i dati dal form
         $data = $request->all();
+
+        // Validazione edit
+        $request->validate([
+            /* Dato che title è unique. Quando lo vogliamo modificare dobbiamo specificare, oltre al nome della tabella (comics), il nome della colonna (title) e di escludere 
+            se stesso tramite l'id.
+            N.B. non mettere spazi*/
+            "title" => "required|string|max:50|unique:comics,title,{$comic->id}", //
+            "description" => "required",
+            "url_img" => "required|url", //|unique:comics
+            "price" => "required|numeric|min:0|max:99",
+            "series" => "required|string|max:50",
+            "sale_date" => "required|date",
+            // Il valore di type viene assegnato da una select con 2 options
+            "type" => [
+                "required", Rule::in(["comic book", "graphic novel"])
+            ],
+        ]);
+
         //Ho già l'elemento. E' una modifica
-        $comic->title = $data["title"];
-        $comic->description = $data["description"];
-        $comic->url_img = $data["url_img"];
-        $comic->price = $data["price"];
-        $comic->series = $data["series"];
-        $comic->sale_date = $data["sale_date"];
-        $comic->type = $data["type"];
-        $comic->save();
+        // $comic->title = $data["title"];
+        // $comic->description = $data["description"];
+        // $comic->url_img = $data["url_img"];
+        // $comic->price = $data["price"];
+        // $comic->series = $data["series"];
+        // $comic->sale_date = $data["sale_date"];
+        // $comic->type = $data["type"];
+        // $comic->save();
+
+        // Aggiorno la risorsa con i nuovi dati
+        $comic->update($data);
+
         //Restituisco la pagina modificata
         return redirect()->route('comics.show', $comic->id);
     }
