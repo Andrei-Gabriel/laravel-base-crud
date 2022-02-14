@@ -42,15 +42,18 @@ class ComicController extends Controller
         //Prendo i dati dal form
         $data = $request->all();
         //Inserisco un nuovo record nella tabella
-        $newComic = new Comic();
-        $newComic->title = $data["title"];
-        $newComic->description = $data["description"];
-        $newComic->url_img = $data["thumb"];
-        $newComic->price = $data["price"];
-        $newComic->series = $data["series"];
-        $newComic->sale_date = $data["sale_date"];
-        $newComic->type = $data["type"];
-        $newComic->save();
+        // $newComic = new Comic();
+        // $newComic->title = $data["title"];
+        // $newComic->description = $data["description"];
+        // $newComic->url_img = $data["thumb"];
+        // $newComic->price = $data["price"];
+        // $newComic->series = $data["series"];
+        // $newComic->sale_date = $data["sale_date"];
+        // $newComic->type = $data["type"];
+        // $newComic->save();
+
+        // Inserisco un nuovo record nella tabella
+        $newComic = Comic::create($data);
 
         return redirect()->route('comics.show', $newComic->id);
     }
