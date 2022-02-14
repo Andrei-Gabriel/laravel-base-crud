@@ -47,11 +47,14 @@ class ComicController extends Controller
         $request->validate([
             "title" => "required|string|max:50|unique:comics",
             "description" => "required",
-            "url_img" => "required|string|max:255|unique:comics",
-            "price" => "required|numeric",
+            "url_img" => "required|url", //|unique:comics
+            "price" => "required|numeric|min:0|max:99",
             "series" => "required|string|max:50",
             "sale_date" => "required|date",
-            "type" => "required",
+            // Il valore di type viene assegnato da una select con 2 options
+            "type" => [
+                "required", Rule::in(["comic book", "graphic novel"])
+            ],
         ]);
 
         //Inserisco un nuovo record nella tabella
@@ -110,7 +113,7 @@ class ComicController extends Controller
         //Ho già l'elemento. E' una modifica
         $comic->title = $data["title"];
         $comic->description = $data["description"];
-        $comic->url_img = $data["thumb"];
+        $comic->url_img = $data["url_img"];
         $comic->price = $data["price"];
         $comic->series = $data["series"];
         $comic->sale_date = $data["sale_date"];
